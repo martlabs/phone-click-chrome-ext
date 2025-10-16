@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneClick Demo - Contact Information</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+        
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+        
+        .header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section h2 {
+            margin: 0 0 20px 0;
+            color: #667eea;
+            font-size: 1.5em;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .contact-card h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .phone-display {
+            font-size: 1.2em;
+            font-weight: 500;
+            margin: 8px 0;
+            padding: 8px 12px;
+            background: #e9ecef;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .business-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-list {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .feature-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .feature-list li {
+            margin: 8px 0;
+            color: #555;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .highlight strong {
+            color: #856404;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #6c757d;
+            color: white;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📞 PhoneClick Demo</h1>
+        <p>See how PhoneClick automatically adds call buttons to phone numbers</p>
+    </div>
+
+    <div class="section">
+        <h2>🏢 Business Directory</h2>
+        <div class="business-info">
+            <div class="contact-card">
+                <h3>Acme Restaurant</h3>
+                <p>Call us for reservations: <span class="phone-display">(555) 123-4567</span></p>
+                <p>Emergency line: <span class="phone-display">555-987-6543</span></p>
+                <p>International: <span class="phone-display">+1 555 123 4567</span></p>
+            </div>
+            
+            <div class="contact-card">
+                <h3>Tech Support</h3>
+                <p>Main line: <span class="phone-display">1-800-555-0199</span></p>
+                <p>Direct: <span class="phone-display">555.123.4567</span></p>
+                <p>UK Office: <span class="phone-display">+44 20 7123 4567</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🏠 Real Estate Listings</h2>
+        <div class="contact-card">
+            <h3>Beautiful Family Home - $450,000</h3>
+            <p>Contact agent: <span class="phone-display">555 123 4567</span></p>
+            <p>Text or call: <span class="phone-display">(555)123-4567</span></p>
+            <p>24/7 hotline: <span class="phone-display">555.123.4567</span></p>
+        </div>
+        
+        <div class="contact-card">
+            <h3>Downtown Apartment - $2,200/month</h3>
+            <p>Property manager: <span class="phone-display">555-123-4567</span></p>
+            <p>Leasing office: <span class="phone-display">555 123 4567</span></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📋 Contact Information</h2>
+        <div class="contact-card">
+            <h3>Customer Service</h3>
+            <p>Phone: <span class="phone-display">1-800-555-0123</span></p>
+            <p>Local: <span class="phone-display">555.123.4567</span></p>
+            <p>International: <span class="phone-display">+1 (555) 123-4567</span></p>
+        </div>
+        
+        <div class="contact-card">
+            <h3>Sales Department</h3>
+            <p>Direct line: <span class="phone-display">555-123-4567</span></p>
+            <p>Toll-free: <span class="phone-display">1-800-555-0456</span></p>
+            <p>Mobile: <span class="phone-display">555 123 4567</span></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🚑 Emergency Services</h2>
+        <div class="contact-card">
+            <h3>Emergency Contacts</h3>
+            <p>Police: <span class="phone-display">911</span></p>
+            <p>Fire Department: <span class="phone-display">911</span></p>
+            <p>Medical Emergency: <span class="phone-display">911</span></p>
+            <p>Poison Control: <span class="phone-display">1-800-222-1222</span></p>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <strong>💡 Tip:</strong> Enable PhoneClick by clicking the extension icon, then notice how all phone numbers above automatically get clickable 📞 call buttons!
+    </div>
+
+    <div class="feature-list">
+        <h2>✨ PhoneClick Features</h2>
+        <ul>
+            <li>Automatically detects phone numbers in various formats</li>
+            <li>Adds clickable 📞 call buttons next to numbers</li>
+            <li>Works with local, toll-free, and international numbers</li>
+            <li>Enable/disable per website with one click</li>
+            <li>Remembers your preferences for each site</li>
+            <li>Clean, unobtrusive design</li>
+            <li>No data collection or tracking</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📱 Different Phone Formats Supported</h2>
+        <p>PhoneClick recognizes all these formats:</p>
+        <ul>
+            <li>Standard: <span class="phone-display">555-123-4567</span></li>
+            <li>With parentheses: <span class="phone-display">(555) 123-4567</span></li>
+            <li>With dots: <span class="phone-display">555.123.4567</span></li>
+            <li>With spaces: <span class="phone-display">555 123 4567</span></li>
+            <li>Toll-free: <span class="phone-display">1-800-555-0199</span></li>
+            <li>International: <span class="phone-display">+1 555 123 4567</span></li>
+            <li>UK format: <span class="phone-display">+44 20 7123 4567</span></li>
+            <li>Emergency: <span class="phone-display">911</span></li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>📞 <strong>PhoneClick</strong> - Making phone numbers clickable across the web</p>
+        <p>Install the extension and click the icon to see it in action!</p>
+    </div>
+</body>
+</html>

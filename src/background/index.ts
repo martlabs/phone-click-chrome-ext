@@ -25,27 +25,27 @@ chrome.action.onClicked.addListener(async (tab) => {
     // Update the icon to reflect the current state
     updateIcon(newState)
 
-    // Handle state change for all tabs on this domain
-    chrome.tabs.query({ url: `*://${domain}/*` }, (tabs) => {
-      tabs.forEach((t) => {
-        if (t.id) {
-          if (newState) {
-            // Enabling: send message to start the extension
-            chrome.tabs
-              .sendMessage(t.id, {
-                type: 'TOGGLE_EXTENSION',
-                enabled: newState,
-              })
-              .catch(() => {
-                // Ignore errors for tabs that don't have the content script loaded
-              })
-          } else {
-            // Disabling: reload the page to completely remove extension effects
-            chrome.tabs.reload(t.id)
-          }
-        }
+    // Handle state change for the current tab only
+    if (newState) {
+      // Enabling: inject content script and start the extension
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id! },
+        files: ['src/contentScript/index.ts']
+      }).then(() => {
+        // Send message to start the extension after injection
+        chrome.tabs.sendMessage(tab.id!, {
+          type: 'TOGGLE_EXTENSION',
+          enabled: newState,
+        }).catch(() => {
+          // Ignore errors
+        })
+      }).catch(() => {
+        // Ignore errors
       })
-    })
+    } else {
+      // Disabling: reload the page to completely remove extension effects
+      chrome.tabs.reload(tab.id!)
+    }
   } catch (error) {
     console.error('Error handling icon click:', error)
   }
@@ -73,42 +73,6 @@ function updateIcon(enabled: boolean) {
   chrome.action.setTitle({ title })
 }
 
-// Update icon when tab changes
-chrome.tabs.onActivated.addListener(async (activeInfo) => {
-  const tab = await chrome.tabs.get(activeInfo.tabId)
-  if (!tab.url) return
-
-  try {
-    const url = new URL(tab.url)
-    const domain = url.hostname
-
-    const result = await chrome.storage.local.get([STORAGE_KEY])
-    const enabledDomains = result[STORAGE_KEY] || {}
-    const isEnabled = enabledDomains[domain] || false
-
-    updateIcon(isEnabled)
-  } catch (error) {
-    // Ignore errors for invalid URLs
-  }
-})
-
-// Update icon when tab URL changes
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (changeInfo.status === 'complete' && tab.url) {
-    try {
-      const url = new URL(tab.url)
-      const domain = url.hostname
-
-      const result = await chrome.storage.local.get([STORAGE_KEY])
-      const enabledDomains = result[STORAGE_KEY] || {}
-      const isEnabled = enabledDomains[domain] || false
-
-      updateIcon(isEnabled)
-    } catch (error) {
-      // Ignore errors for invalid URLs
-    }
-  }
-})
 
 // Initialize icon state
 chrome.runtime.onStartup.addListener(() => {
