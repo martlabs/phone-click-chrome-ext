@@ -1,16 +1,19 @@
 {
-  "name": "click-to-call",
-  "displayName": "click-to-call",
-  "version": "0.0.0",
+  "name": "phone-click",
+  "displayName": "PhoneClick",
+  "version": "1.0.0",
   "author": "**",
-  "description": "",
+  "description": "PhoneClick - click numbers on any website. Automatically detects phone numbers and adds clickable call buttons. Enable/disable per website with a simple icon click.",
   "type": "module",
   "license": "MIT",
   "keywords": [
     "chrome-extension",
-    "react",
-    "vite",
-    "create-chrome-ext"
+    "phone",
+    "click-to-call",
+    "telephone",
+    "call-button",
+    "phone-numbers",
+    "telephony"
   ],
   "engines": {
     "node": ">=14.18.0"

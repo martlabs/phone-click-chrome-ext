@@ -10,16 +10,14 @@ export default defineManifest({
   version: packageData.version,
   manifest_version: 3,
   icons: {
-    16: 'img/logo-16.png',
-    32: 'img/logo-32.png',
-    48: 'img/logo-48.png',
-    128: 'img/logo-128.png',
+    16: 'img/enabled16.png',
+    32: 'img/enabled32.png',
+    48: 'img/enabled48.png',
+    128: 'img/enabled128.png',
   },
   action: {
-    default_popup: 'popup.html',
     default_icon: 'img/logo-48.png',
   },
-  options_page: 'options.html',
   devtools_page: 'devtools.html',
   background: {
     service_worker: 'src/background/index.ts',
@@ -36,12 +34,18 @@ export default defineManifest({
   },
   web_accessible_resources: [
     {
-      resources: ['img/logo-16.png', 'img/logo-32.png', 'img/logo-48.png', 'img/logo-128.png'],
-      matches: [],
+      resources: [
+        'img/disabled16.png',
+        'img/disabled32.png',
+        'img/disabled48.png',
+        'img/disabled128.png',
+        'img/enabled16.png',
+        'img/enabled32.png',
+        'img/enabled48.png',
+        'img/enabled128.png',
+      ],
+      matches: ['<all_urls>'],
     },
   ],
-  permissions: ['sidePanel', 'storage'],
-  chrome_url_overrides: {
-    newtab: 'newtab.html',
-  },
+  permissions: ['sidePanel', 'storage', 'tabs', 'activeTab'],
 })
